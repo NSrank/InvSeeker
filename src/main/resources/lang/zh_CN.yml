@@ -1,0 +1,4 @@
+messages:
+  no-permission: "§c你没有权限执行此操作！"
+  invalid-usage: "§c用法: /invsee <玩家名> 或 /endersee <玩家名>"
+  player-not-found: "§c玩家 %player% 不存在！"

@@ -1,0 +1,28 @@
+name: InvSeeker
+version: '${project.version}'
+main: org.plugin.invseeker.InvSeeker
+api-version: '1.20'
+load: STARTUP
+authors: [NSrank & Qwen2.5-Max]
+
+commands:
+  invsee:
+    description: 查看玩家背包
+    usage: /invsee <玩家名>
+    permission: invseeker.view
+  endersee:
+    description: 查看玩家末影箱
+    usage: /endersee <玩家名>
+    permission: invseeker.view
+  invsee reload:
+    description: 重载配置
+    usage: /invsee reload
+    permission: invseeker.admin
+
+permissions:
+  invsee.view:
+    description: 允许查看玩家背包和末影箱
+    default: op
+  invsee.admin:
+    description: 允许重载插件配置
+    default: op

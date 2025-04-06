@@ -17,7 +17,7 @@
 
 ## 安装步骤
 1. **下载插件**  
-   - 从 [https://github.com/NSrank/InvSeeker/releases/) 获取最新版本的 JAR 文件。
+   - 从 [Github Release](https://github.com/NSrank/InvSeeker/releases/) 获取最新版本的 JAR 文件。
 
 2. **部署到服务器**  
    ```powershell

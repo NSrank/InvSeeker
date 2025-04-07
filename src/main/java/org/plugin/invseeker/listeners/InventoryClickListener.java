@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 public class InventoryClickListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getView().getTitle().contains("InvSee")) {
+        if (event.getView().getTitle().contains("InvSeeker")) {
             event.setCancelled(true); // 禁止修改物品
 
             if (event.getSlot() == 36) {

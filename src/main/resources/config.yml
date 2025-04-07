@@ -1,11 +1,17 @@
-messages:
-  no-permission: "§c你没有权限执行此操作！"
-  invalid-usage: "§c用法: /invsee <玩家名> 或 /endersee <玩家名>"
-  player-not-found: "§c玩家 %player% 不存在！"
-gui:
-  title: "§8[§bInvSee§8] §7%player% 的 %type%"
-  back-button: ARROW
-  back-button-name: "§c返回"
+#[InvSeeker}的配置文件
 sitting:
   allow-edit: false # 允许玩家编辑背包
   allow-edit-enderchest: false # 允许玩家编辑末影箱
+  enable-container-logging: false  # 总开关
+  monitored-containers: # 监听的容器类型
+    - CHEST
+    - FURNACE
+    - DISPENSER
+    - DROPPER
+    - HOPPER
+    - BARREL
+    - SHULKER_BOX
+    - BLAST_FURNACE
+    - SMOKER
+    - BREWING_STAND
+    - TRAPPED_CHEST

@@ -1,16 +1,19 @@
 
 
-# InvSeeker - Minecraft 玩家背包查看插件  
+# InvSeeker  | 让我看看！ - Minecraft 玩家背包/容器查看/记录插件  
 [![License](https://img.shields.io/badge/License-GPLv3-green.svg)]()  
 
-**InvSeeker** 是一款基于 **Paper 1.20.1** 的 Minecraft 插件，允许管理员通过可视化 GUI 查看在线/离线玩家的背包及末影箱内容。
+**InvSeeker** （中文名：让我看看！）是一款基于 **Paper 1.20.1** 的 Minecraft 插件，允许管理员通过可视化 GUI 查看在线/离线玩家的背包及末影箱内容。
+还可以记录玩家容器的操作交互！
+
 **注：这是一款100%基于AI开发的插件，由AI生成，仅作为学习交流使用，请勿用于商业用途。**
 ---
 
 ## 功能特性
 - ✅ **可视化 GUI 界面**：直观展示玩家物品栏。
+- ✅ **容器操作日志**：可以将玩家容器的操作记录下来。
 - ✅ **支持离线玩家**：即使玩家不在线也能查看其背包。
-- ✅ **权限控制**：通过 `invsee.view` 和 `invsee.admin` 管理访问权限。
+- ✅ **权限控制**：通过 `invseeker.view` 和 `invseeker.admin` 管理访问权限。
 - ✅ **防止篡改**：禁止在 GUI 中修改玩家物品。
 
 ---
@@ -22,7 +25,7 @@
 2. **部署到服务器**  
    ```powershell
    # 将插件放入服务器 plugins 目录
-   cp InvSee-1.0.jar plugins/
+   cp InvSeeker.jar plugins/
    ```
 
 3. **重启服务器**
@@ -34,11 +37,12 @@
 
 ## 使用说明
 ### 命令
-| 命令                  | 权限节点          | 功能                     |
-|-----------------------|-------------------|--------------------------|
-| `/invsee <玩家名>`    | `invsee.view`     | 打开玩家背包 GUI         |
-| `/endersee <玩家名>`  | `invsee.view`     | 打开玩家末影箱 GUI       |
-| `/invsee reload`      | `invsee.admin`    | 重载配置文件             |
+| 命令                | 权限节点              | 功能          |
+|-------------------|-------------------|-------------|
+| `/invsee <玩家名>`   | `invseeker.view`  | 打开玩家背包 GUI  |
+| `/endersee <玩家名>` | `invseeker.view`  | 打开玩家末影箱 GUI |
+| `/invsee help`    | `invseeker.view`  | 显示帮助信息      |
+| `/invsee reload`  | `invseeker.admin` | 重载配置文件      |
 
 ### GUI 界面
 - **返回按钮**：点击左下角箭头返回。
@@ -49,8 +53,6 @@
 ## 配置文件
 在 `plugins/InvSee/config.yml` 中可自定义以下选项：
 ```yaml
-# 是否允许修改离线玩家物品（谨慎开启）
-allow-edit-offline: false
 
 # 语言设置（支持 en_US/zh_CN）
 language: zh_CN

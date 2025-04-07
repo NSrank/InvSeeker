@@ -1,17 +1,2 @@
 #[InvSeeker}的配置文件
-sitting:
-  allow-edit: false # 允许玩家编辑背包
-  allow-edit-enderchest: false # 允许玩家编辑末影箱
-  enable-container-logging: false  # 总开关
-  monitored-containers: # 监听的容器类型
-    - CHEST
-    - FURNACE
-    - DISPENSER
-    - DROPPER
-    - HOPPER
-    - BARREL
-    - SHULKER_BOX
-    - BLAST_FURNACE
-    - SMOKER
-    - BREWING_STAND
-    - TRAPPED_CHEST
+enable-container-logging: true  # 总开关

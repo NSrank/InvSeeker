@@ -6,11 +6,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Inventory;
 import org.plugin.invseeker.InvSeeker;
-import org.plugin.invseeker.gui.InventoryGUI;
-
+import org.plugin.invseeker.utils.OfflinePlayerDataLoader;
 
 public class InvSeeCommand implements CommandExecutor {
     private final InvSeeker plugin;
@@ -52,14 +51,36 @@ public class InvSeeCommand implements CommandExecutor {
                 String targetName = args[0];
                 Player target = Bukkit.getPlayer(targetName);
 
-                if (target == null) {
-                    viewer.sendMessage(plugin.getConfig().getString("messages.player-not-found").replace("%player%", targetName));
+                // 在线玩家
+                if (target != null) {
+                    Inventory gui = createPlayerInventoryGUI(target);
+                    viewer.openInventory(gui);
                     return true;
                 }
 
-                Inventory gui = target.getInventory();
-                viewer.openInventory(gui);
-                return true;
+                // 离线玩家
+                try {
+                    org.bukkit.@org.jetbrains.annotations.NotNull OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(targetName);
+                    if (offlinePlayer != null && offlinePlayer.hasPlayedBefore()) {
+                        Inventory gui = OfflinePlayerDataLoader.loadOfflineInventory(offlinePlayer.getUniqueId());
+                        if (gui != null) {
+                            viewer.openInventory(gui);
+                            return true;
+                        } else {
+                            viewer.sendMessage(ChatColor.RED + "[InvSeeker] §c无法加载离线玩家的背包！");
+                            return true;
+                        }
+                    } else {
+                        String message = plugin.getConfig().getString("messages.player-not-found", "§c玩家 %player% 不存在！")
+                                .replace("%player%", targetName);
+                        viewer.sendMessage(ChatColor.RED + "[InvSeeker] " + message);
+                        return true;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    viewer.sendMessage(ChatColor.RED + "[InvSeeker] §c加载离线玩家数据时发生错误！");
+                    return true;
+                }
         }
     }
 
@@ -81,9 +102,8 @@ public class InvSeeCommand implements CommandExecutor {
         Inventory gui = Bukkit.createInventory(null, 54, "§8" + target.getName() + " 的背包");
 
         // 填充玩家背包内容（9x3 格）
-        ItemStack[] playerInventory = target.getInventory().getContents();
         for (int i = 0; i < 27; i++) {
-            gui.setItem(i, playerInventory[i]);
+            gui.setItem(i, target.getInventory().getItem(i));
         }
 
         // 填充装备栏（最后 9 格）
@@ -98,5 +118,4 @@ public class InvSeeCommand implements CommandExecutor {
 
         return gui;
     }
-
 }

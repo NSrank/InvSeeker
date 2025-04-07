@@ -43,6 +43,7 @@ public class InvSeeker extends JavaPlugin {
 
         this.logManager = new LogManager(this); // 初始化日志管理器
         getServer().getPluginManager().registerEvents(new ContainerInteractListener(this), this);
+        logManager.writeLog("插件已加载，日志功能测试中...");
         getLogger().info("容器交互日志功能已加载！");
     }
 
@@ -59,7 +60,7 @@ public class InvSeeker extends JavaPlugin {
         return config;
     }
 
-    public static final String VERSION = "1.5.1"; // 插件版本号
+    public static final String VERSION = "1.5.2"; // 插件版本号
 
     public LogManager getLogManager() {
         return this.logManager;

@@ -4,7 +4,8 @@ import org.bukkit.Bukkit;
 import org.plugin.invseeker.listeners.InventoryClickListener;
 import org.plugin.invseeker.command.InvSeeCommand;
 import org.plugin.invseeker.command.EnderSeeCommand;
-import org.plugin.invseeker.listeners.ContainerInteractListener;
+import org.plugin.invseeker.listeners.PutItemListener;
+import org.plugin.invseeker.listeners.TakeItemListener;
 import org.plugin.invseeker.utils.LogManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -42,7 +43,8 @@ public class InvSeeker extends JavaPlugin {
         getLogger().info("InvSeeker v" + VERSION + " 已成功加载！");
 
         this.logManager = new LogManager(this); // 初始化日志管理器
-        getServer().getPluginManager().registerEvents(new ContainerInteractListener(this), this);
+        getServer().getPluginManager().registerEvents(new PutItemListener(this), this);
+        getServer().getPluginManager().registerEvents(new TakeItemListener(this), this);
         logManager.writeLog("插件已加载，日志功能测试中...");
         getLogger().info("容器交互日志功能已加载！");
     }
@@ -60,7 +62,7 @@ public class InvSeeker extends JavaPlugin {
         return config;
     }
 
-    public static final String VERSION = "1.5.2"; // 插件版本号
+    public static final String VERSION = "1.5.3"; // 插件版本号
 
     public LogManager getLogManager() {
         return this.logManager;

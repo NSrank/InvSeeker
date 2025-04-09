@@ -1,4 +1,0 @@
-messages:
-  no-permission: "[InvSeeker] §c你没有权限执行此操作！"
-  invalid-usage: "[InvSeeker] §c用法: /invsee <玩家名> 或 /endersee <玩家名>"
-  player-not-found: "[InvSeeker] §c玩家 %player% 不存在！"

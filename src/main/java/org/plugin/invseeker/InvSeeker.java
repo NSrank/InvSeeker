@@ -40,6 +40,14 @@ public class InvSeeker extends JavaPlugin {
         } else {
             getLogger().severe("命令 'endersee' 未在 plugin.yml 中定义！");
         }
+        try {
+            // 检查 NBT-API 是否可用
+            Class.forName("de.tr7zw.nbtapi.NBTContainer");
+            getLogger().info("依赖插件：NBT-API 已成功加载！");
+        } catch (ClassNotFoundException e) {
+            getLogger().severe("未找到 NBT-API 插件，请确保已安装并启用！");
+            getServer().getPluginManager().disablePlugin(this);
+        }
         getLogger().info("InvSeeker v" + VERSION + " 已成功加载！");
 
         this.logManager = new LogManager(this); // 初始化日志管理器
@@ -62,7 +70,7 @@ public class InvSeeker extends JavaPlugin {
         return config;
     }
 
-    public static final String VERSION = "1.5.3"; // 插件版本号
+    public static final String VERSION = "1.5.4"; // 插件版本号
 
     public LogManager getLogManager() {
         return this.logManager;

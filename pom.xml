@@ -6,7 +6,7 @@
 
     <groupId>org.plugin</groupId>
     <artifactId>InvSeeker</artifactId>
-    <version>1.5.3-SNAPSHOT</version>
+    <version>1.5.4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>InvSeeker</name>
@@ -53,7 +53,6 @@
                                     <artifact>*:*</artifact>
                                     <excludes>
                                         <exclude>META-INF/**</exclude> <!-- 排除签名文件 -->
-                                        <!-- 不再排除 item-nbt-api -->
                                     </excludes>
                                 </filter>
                             </filters>
@@ -93,12 +92,14 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Item-NBT-API -->
+        <!-- NBT-API (外置依赖) -->
         <dependency>
             <groupId>de.tr7zw</groupId>
             <artifactId>item-nbt-api-plugin</artifactId>
             <version>2.14.1</version>
-            <scope>compile</scope> <!-- 确保依赖被打包 -->
+            <scope>provided</scope> <!-- 确保不被打包 -->
         </dependency>
     </dependencies>
+
+
 </project>

@@ -1,5 +1,5 @@
 name: InvSeeker
-version: '1.5.3'
+version: '1.5.4'
 main: org.plugin.invseeker.InvSeeker
 api-version: '1.20'
 load: STARTUP
@@ -26,6 +26,8 @@ commands:
     usage: /endersee <玩家名>
     permission: invseeker.view
 
+dependancies:
+  - Item-NBT-API
 
 permissions:
   invsee.view:

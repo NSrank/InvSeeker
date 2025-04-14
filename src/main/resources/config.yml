@@ -1,2 +1,3 @@
 # [InvSeeker}的配置文件
+language: zh_CN  # 语言，支持 zh_CN
 enable-container-logging: true  # 总开关
